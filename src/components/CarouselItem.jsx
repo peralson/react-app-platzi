@@ -14,14 +14,18 @@ const CarouselItem = (props) => {
   const { id, cover, title, year, contentRating, duration, isList } = props
 
   const handleSetFavorite = () => {
-    props.setFavorite({
-      id,
-      cover, 
-      title, 
-      year, 
-      contentRating, 
-      duration
-    })
+    const isInList = props.myList.find(item => item.id === id)
+
+    if(!isInList) {
+      props.setFavorite({
+        id,
+        cover, 
+        title, 
+        year, 
+        contentRating, 
+        duration
+      })
+    }
   }
 
   const handleDeleteFavorite = (itemId) => {
@@ -72,9 +76,15 @@ CarouselItem.propTypes = {
   duration: PropTypes.number,
 }
 
+const mapStateToProps = state => {
+  return {
+      myList: state.myList
+  }
+}
+
 const mapDispatchToProps = {
   setFavorite,
   deleteFavorite
 }
 
-export default connect(null, mapDispatchToProps)(CarouselItem)
+export default connect(mapStateToProps, mapDispatchToProps)(CarouselItem)

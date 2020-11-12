@@ -16,12 +16,16 @@ const App = () => {
         <BrowserRouter>
             <Layout>
                 <Switch>
-                    <Route exact path="/" component={Home} />
-                    <Route exact path="/favourites" component={Favourites} />
+                    {/* Logs into App */}
                     <Route exact path="/login" component={Login} />
                     <Route exact path="/register" component={Register} />
-                    <Route exact path="/player/:id" component={Player} />
 
+                    {/* Main Containers */}
+                    <Route exact path="/" component={Home} />
+                    <Route exact path="/favourites" component={Favourites} />
+                    
+                    {/* Other routes */}
+                    <Route exact path="/player/:id" component={Player} />
                     <Route component={NotFound} />
                 </Switch>
             </Layout>
