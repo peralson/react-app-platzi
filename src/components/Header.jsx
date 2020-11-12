@@ -39,7 +39,9 @@ const Header = props => {
             </div>
             <ul>
                 {hasUser ?
-                    <li><a href="/">{user.name}</a></li>
+                    <Link to="/favourites" onClick={handleLogout}>
+                        Los favoritos de {user.name}
+                    </Link>
                     : null
                 }
                 {hasUser ?
