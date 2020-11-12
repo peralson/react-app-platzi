@@ -11,7 +11,7 @@ import CarouselItem from '../components/CarouselItem'
 // SCSS
 import '../assets/styles/App.scss'
 
-const Home = ({ searchQuery, myList, trends, originals }) => {
+const Home = ({ searchQuery, trends, originals }) => {
 
     return (
         <>
@@ -24,19 +24,6 @@ const Home = ({ searchQuery, myList, trends, originals }) => {
                             <CarouselItem 
                                 key={item.id}
                                 {...item}
-                            />
-                        )}
-                    </Carousel>
-                </Categories>
-            }
-            {myList.length > 0 &&
-                <Categories title="Tus videos favoritos">
-                    <Carousel>
-                        {myList.map(item => 
-                            <CarouselItem 
-                                key={item.id}
-                                {...item}
-                                isList
                             />
                         )}
                     </Carousel>
@@ -69,7 +56,6 @@ const Home = ({ searchQuery, myList, trends, originals }) => {
 const mapStateToProps = state => {
     return {
         searchQuery: state.searchQuery,
-        myList: state.myList,
         trends: state.trends,
         originals: state.originals
     }

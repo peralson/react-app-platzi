@@ -7,6 +7,7 @@ import Login from '../containers/Login'
 import Register from '../containers/Register'
 import Home from '../containers/Home'
 import Player from '../containers/Player'
+import Favourites from '../containers/Favourites'
 
 import NotFound from '../containers/NotFound'
 
@@ -16,6 +17,7 @@ const App = () => {
             <Layout>
                 <Switch>
                     <Route exact path="/" component={Home} />
+                    <Route exact path="/favourites" component={Favourites} />
                     <Route exact path="/login" component={Login} />
                     <Route exact path="/register" component={Register} />
                     <Route exact path="/player/:id" component={Player} />
