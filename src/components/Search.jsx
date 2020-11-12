@@ -1,15 +1,38 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { connect } from 'react-redux'
+import { searchRequest } from '../actions'
+
+// SCSS
+import className from 'classnames'
 import '../assets/styles/components/Search.scss'
 
-const Search = () => {
+const Search = (props) => {
+    const { isHome } = props
+    
+    const inputStyle = className('input', {
+        isHome,
+    })
+
+    const handleInput = event => {
+        props.searchRequest(event.target.value)
+    }
 
     return(
-    <section className="main">
-        <h2 className="main__title">¿Qué quieres ver hoy?</h2>
-        <input type="text" className="input" placeholder="Buscar..." />
-    </section>
+        <section className="main">
+            <h2 className="main__title">¿Qué quieres ver hoy?</h2>
+            <input
+                type="text"
+                className={inputStyle}
+                placeholder="Buscar..."
+                onChange={handleInput}
+            />
+        </section>
     )
 }
 
+const mapDispatchToProps = {
+    searchRequest,
+}
 
-export default Search
+
+export default connect(null, mapDispatchToProps)(Search)
