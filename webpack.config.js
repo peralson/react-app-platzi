@@ -15,7 +15,8 @@ module.exports = {
     // La instancia resolve nos ayuda a detectar el directorio donde nos encontramos y el directorio donde vamos a guardar los archivos compilados
     path: path.resolve(__dirname, "dist"),
     // Filename nos pode un nombre al archivo compilado
-    filename: "bundle.js"
+    filename: "bundle.js",
+    publicPath: '/',
   },
   // Este elemento resulve las extensiones que vamos a utilizar
   resolve: {
@@ -67,6 +68,9 @@ module.exports = {
         ]
       }
     ]
+  },
+  devServer: {
+    historyApiFallback: true,
   },
   // Se añaden los plugins que necesitamos
   plugins: [
